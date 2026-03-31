@@ -52,3 +52,7 @@ In July & August, replace bookings made >30 days of arrival which is likely to b
 ## Action plan:
 a. Encourage last-minute bookings and implement strategies to minimize cancellation
 b. Optimize revenue management to capitalize on higher average prices for last-minute bookings 
+
+## ⚙️ Tools Used
+- Microsoft Excel, Power Query – Data analysis and visualization.
+- Charts & Dashboards – For explanatory storytelling and insights.
