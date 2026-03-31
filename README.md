@@ -46,8 +46,6 @@ b. Booking made >30 days of arrival has a cancellation rate of 38% while booking
 
 c. Booking made >30 has an average daily date of $168.52, while bookings made 0-30days of arrival have higher average daily rate $190.60.
 
-![Exploratory Analysis](images/Exploratory%20Analysis%20SHG.jpg)
-
 ## Opportunity for growth:
 In July & August, replace bookings made >30 days of arrival which is likely to be cancelled with bookings made 0-30 days of arrival which has lower cancellation risk and higher daily average rate. This will turn revenue losses into additional income
 
