@@ -1,58 +1,133 @@
-# SHG Hotel Reservation Cancellations Revenue Optimization (2015-2017)
-## Business Introduction
+# SHG Hotel — Reservation Cancellations & Revenue Optimization (2015–2017)
 
-SHG Hotel Group is a leading hospitality brand operating a diverse portfolio of hotels and resorts, serving both leisure and business travelers. The organization is recognized for delivering high-quality guest experiences, maintaining strong occupancy rates, and implementing competitive pricing strategies across multiple locations.
+> **An exploratory data analysis project** identifying the root causes of ~$1M in peak-season revenue loss and delivering actionable, data-backed recommendations to reduce cancellations and optimize pricing.
 
-This project focuses on analyzing SHG’s hotel booking data to uncover actionable insights that can improve operational efficiency and revenue performance. The dataset captures key aspects of hotel operations, including booking patterns, customer segmentation, cancellations, and seasonal demand fluctuations.
+---
+
+## Overview
+
+Splendor Hotel Group (SHG) was losing significant revenue during its busiest months — not from lack of demand, but from preventable booking cancellations. This project digs into three years of reservation data to quantify the problem, uncover the patterns driving it, and propose a concrete revenue recovery strategy.
+
+**Key finding:** Advance bookings (made 30+ days before arrival) cancel at nearly double the rate of last-minute bookings — yet generate lower daily revenue. Replacing a portion of summer advance bookings with same-month reservations could recover a significant share of the ~$1M lost in July–August 2016 alone.
+
+---
 
 ## Problem Statement
-Splendor Group Hotel faces revenue losses due to booking cancellations, inefficient pricing strategies and fluctuating occupancy rates. This project focuses on identifying the root causes of these losses and providing data-driven recommendations to improve revenue performance.
 
-## Aims of the Analysis
-- Identify key factors contributing to revenue loss from cancellations during peak (summer) periods  
-- Compare booking behavior between advance reservations and same-month bookings  
-- Evaluate the impact of cancellations on Average Daily Rate (ADR) and occupancy levels  
-- Propose data-driven strategies to maximize revenue while maintaining customer retention
+SHG faced three compounding challenges:
 
- ## Procedure
-1. Data Collection & Understanding
+- High cancellation rates during peak summer months (July & August)
+- Revenue loss from advance bookings that cancel without replacement
+- A pricing gap: lower Average Daily Rates on the booking type most likely to cancel
 
-- Obtained booking and cancellation records from SHG Hotel Group.
+---
 
-- Reviewed fields such as reservation date, stay date, cancellation status, revenue, and average daily rate.
+## Objectives
 
-- Understood seasonal trends with focus on summer months (July & August).
+- Quantify revenue lost to cancellations, with focus on summer peak periods
+- Compare cancellation behavior and pricing between advance vs. same-month bookings
+- Identify patterns in Average Daily Rate (ADR) relative to booking lead time
+- Recommend a data-driven strategy to reduce risk and maximize revenue
 
-2. Data Cleaning & Preparation
+---
 
-- Removed duplicates, handled missing values, and standardized date formats.
+## Methodology
 
-- Created derived variables (e.g., booking lead time, cancellation flag, revenue loss amount).
+### 1. Data Collection & Understanding
+- Sourced booking and cancellation records from SHG Hotel Group (2015–2017)
+- Key fields: reservation date, arrival date, cancellation status, revenue, and ADR
+- Focused analysis on summer months (July & August) due to observed seasonal patterns
 
-- Segmented data into advance bookings (>30 days) and same-month bookings (≤30 days).
+### 2. Data Cleaning & Preparation
+- Removed duplicates, resolved missing values, and standardized date formats
+- Engineered derived features: booking lead time, cancellation flag, revenue loss amount
+- Segmented bookings into two categories:
+  - **Advance bookings** — made more than 30 days before arrival
+  - **Same-month bookings** — made 0–30 days before arrival
 
-3. Exploratory Data Analysis (EDA) using pivot tables
+### 3. Exploratory Data Analysis (EDA)
+- Built pivot tables to analyze cancellation rates by month and booking window
+- Compared ADR across cancelled vs. non-cancelled reservations
+- Visualized revenue gained vs. revenue lost using charts and dashboards
 
-- Analyzed cancellation rates across months and booking lead times.
+---
 
-- Compared average daily rates (ADR) between cancelled vs. non-cancelled bookings.
+## Key Findings
 
-- Visualized revenue gained vs. revenue lost due to cancellations.
+| Metric | Advance Bookings (>30 days) | Same-Month Bookings (0–30 days) |
+|---|---|---|
+| Cancellation rate | 38% | 20% |
+| Average Daily Rate (ADR) | $168.52 | $190.60 |
+| Revenue risk | Higher | Lower |
 
-## Key insight:
-a. Splendor Group Hotel data reveals that hotel booking cancellations resulted in in a significant revenue loss (34% of potential revenue) of $1 million in July & August, 2016.
+- Cancellations in July & August 2016 resulted in **~$1M in lost revenue** — approximately **34% of potential peak-season revenue**
+- Same-month bookings not only cancel less, they also command a **$22 higher ADR** on average
 
-b. Booking made >30 days of arrival has a cancellation rate of 38% while bookings made 0-30 days of arrival has 20% rate of cancellation.
+---
 
-c. Booking made >30 has an average daily date of $168.52, while bookings made 0-30days of arrival have higher average daily rate $190.60.
+## Recommendations
 
-## Opportunity for growth:
-In July & August, replace bookings made >30 days of arrival which is likely to be cancelled with bookings made 0-30 days of arrival which has lower cancellation risk and higher daily average rate. This will turn revenue losses into additional income
+**Replace high-risk advance summer bookings with same-month reservations.**
 
-## Action plan:
-a. Encourage last-minute bookings and implement strategies to minimize cancellation
-b. Optimize revenue management to capitalize on higher average prices for last-minute bookings 
+In July and August, actively shift the booking mix by:
 
-## ⚙️ Tools Used
-- Microsoft Excel, Power Query – Data analysis and visualization.
-- Charts & Dashboards – For explanatory storytelling and insights.
+1. **Implementing a last-minute booking promotion** — targeted offers in the 0–30 day window to fill inventory closer to arrival
+2. **Applying strategic overbooking** — accept more advance reservations than available rooms during peak months, calibrated to the 38% cancellation rate, to protect against no-shows
+3. **Optimizing pricing by lead time** — review rate structures to better capture the higher ADR that same-month bookers are already willing to pay
+
+---
+
+## Tools Used
+
+| Tool | Purpose |
+|---|---|
+| Microsoft Excel | Data analysis, pivot tables, calculations |
+| Power Query | Data cleaning and transformation |
+| Charts & Dashboards | Visualization and storytelling |
+
+---
+
+## Data Dictionary
+
+| Column | Type | Description |
+|---|---|---|
+| `Nights` | Numeric | Number of nights in the reservation |
+| `Guest` | Numeric | Total number of guests in the booking |
+| `Distribution Channel` | Categorical | Channel through which the booking was made (e.g. Direct, OTA, Corporate) |
+| `Customer Type` | Categorical | Guest segment classification (e.g. Transient, Group, Contract) |
+| `Country` | Categorical | Country of origin of the guest |
+| `Deposit Type` | Categorical | Deposit status at time of booking (e.g. No Deposit, Non-Refundable, Refundable) |
+| `Average Daily Rate` | Numeric | Average nightly room rate for the booking, in USD |
+| `Status` | Categorical | Final reservation outcome — either `Checked-Out` or `Cancelled` |
+| `Status Update` | Date | Date on which the status (check-out or cancellation) was recorded |
+| `Cancelled` | Binary | Cancellation flag — `1` = Cancelled, `0` = Not cancelled |
+| `Revenue` | Numeric | Actual revenue realised from the booking, in USD |
+| `Revenue Loss` | Numeric | Estimated revenue lost due to cancellation (ADR × Nights, where Cancelled = 1), in USD |
+
+---
+
+## Dashboard Preview
+
+![Explanatory Analysis Dashboard](Explanatory_Analysis-SHG.jpg)
+
+---
+
+## Project Structure
+
+```
+├── Explanatory_Analysis-SHG.jpg   # Dashboard screenshot
+├── README.md                       # Project documentation
+└── LICENSE                         # MIT License
+```
+
+---
+
+## About the Author
+
+This project was completed as part of a data analytics portfolio focused on business intelligence and revenue optimization in the hospitality industry.
+
+Feel free to connect or reach out with questions.
+
+---
+
+*Licensed under the [MIT License](LICENSE)*
