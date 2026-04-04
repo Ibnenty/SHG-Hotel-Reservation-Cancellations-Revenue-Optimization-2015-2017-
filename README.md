@@ -112,16 +112,6 @@ In July and August, actively shift the booking mix by:
 
 ---
 
-## Project Structure
-
-```
-├── Explanatory_Analysis-SHG.jpg   # Dashboard screenshot
-├── README.md                       # Project documentation
-└── LICENSE                         # MIT License
-```
-
----
-
 ## About the Author
 
 This project was completed as part of a data analytics portfolio focused on business intelligence and revenue optimization in the hospitality industry.
